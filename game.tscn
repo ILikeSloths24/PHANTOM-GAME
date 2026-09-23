@@ -1,3 +1,53 @@
 [gd_scene format=3 uid="uid://w415qxutab73"]
+[gd_scene format=4 uid="uid://w415qxutab73"]
 
 [node name="Node3D" type="Node3D" unique_id=195107002]
+[ext_resource type="Script" uid="uid://35cv86vnigjo" path="res://PHANTOM GAME/character_body_2d.gd" id="1_xplf0"]
+[ext_resource type="Texture2D" uid="uid://cl2a4g65o4mdr" path="res://New Piskel.png" id="2_6cpln"]
+[ext_resource type="Texture2D" uid="uid://bmjc6ks2c08sa" path="res://Art/Test tile.png" id="3_6cpln"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nvor"]
+texture = ExtResource("3_6cpln")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_goaes"]
+sources/0 = SubResource("TileSetAtlasSource_3nvor")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nvor"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6cpln")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goaes"]
+size = Vector2(116, 181)
+
+[node name="Node2D" type="Node2D" unique_id=1418492901]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1660472163]
+tile_map_data = PackedByteArray("AAAVABEAAAAAAAAAAAAVABMAAAAAAAAAAAAVABUAAAAAAAAAAAAVABcAAAAAAAAAAAAXABQAAAAAAAAAAAAZABQAAAAAAAAAAAAZABIAAAAAAAAAAAAZABEAAAAAAAAAAAAZABUAAAAAAAAAAAAZABcAAAAAAAAAAAAdABEAAAAAAAAAAAAdABIAAAAAAAAAAAAdABMAAAAAAAAAAAAdABQAAAAAAAAAAAAdABUAAAAAAAAAAAAdABYAAAAAAAAAAAAdABcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_goaes")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=516338459]
+script = ExtResource("1_xplf0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1490822291]
+position = Vector2(564.5, 329.5)
+scale = Vector2(5.40625, 5.59375)
+sprite_frames = SubResource("SpriteFrames_3nvor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1447033130]
+position = Vector2(567, 329.5)
+shape = SubResource("RectangleShape2D_goaes")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=648574597]
+position = Vector2(573, 324)
